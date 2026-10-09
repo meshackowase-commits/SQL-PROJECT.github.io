@@ -1,0 +1,682 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <title>Ian Meshack Owase | Data Analytics Portfolio</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <meta name="description" content="Ian Meshack Owase — Economist & Data Analyst. SQL, Python, Stata and Power BI portfolio." />
+        <meta name="theme-color" content="#0b1120" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+
+        <!-- MODERN UI CUSTOM THEME -->
+        <style>
+            /* ============ DESIGN TOKENS ============ */
+            :root {
+                --bg-main:      #0b1120;
+                --bg-surface:   #121c33;
+                --bg-elev:      #17223c;
+                --accent:       #38bdf8;
+                --accent-2:     #2dd4bf;
+                --accent-glow:  rgba(56, 189, 248, .30);
+                --text-main:    #f1f5f9;
+                --text-muted:   #94a3b8;
+                --border:       rgba(148, 163, 184, .16);
+                --radius:       16px;
+                --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+                --font-body:    'Inter', 'Segoe UI', Roboto, sans-serif;
+            }
+
+            /* ============ BASE ============ */
+            html { scroll-behavior: smooth; }
+
+            body, input, select, textarea {
+                font-family: var(--font-body) !important;
+                background-color: var(--bg-main) !important;
+                color: var(--text-muted) !important;
+                -webkit-font-smoothing: antialiased;
+            }
+            h1, h2, h3, h4, h5, h6, strong, b {
+                font-family: var(--font-display);
+                color: var(--text-main) !important;
+                letter-spacing: .3px;
+            }
+            a { color: var(--accent); transition: color .3s ease; }
+            a:hover { color: var(--accent-2); }
+
+            section, article { scroll-margin-top: 70px; }
+
+            /* Custom scrollbar */
+            ::-webkit-scrollbar { width: 10px; }
+            ::-webkit-scrollbar-track { background: #0b1120; }
+            ::-webkit-scrollbar-thumb {
+                background: linear-gradient(var(--accent), var(--accent-2));
+                border-radius: 10px;
+                border: 2px solid #0b1120;
+            }
+            ::selection { background: var(--accent); color: #04121f; }
+
+            /* ============ SCROLL REVEAL ============ */
+            .js .reveal {
+                opacity: 0;
+                transform: translateY(28px);
+                transition: opacity .7s cubic-bezier(.22,1,.36,1),
+                            transform .7s cubic-bezier(.22,1,.36,1);
+            }
+            .js .reveal.is-visible { opacity: 1; transform: none; }
+            @media (prefers-reduced-motion: reduce) {
+                .js .reveal { opacity: 1 !important; transform: none !important; }
+                html { scroll-behavior: auto; }
+            }
+
+            /* ============ HERO / INTRO ============ */
+            #intro {
+                background:
+                    radial-gradient(circle at 15% 20%, rgba(56,189,248,.14), transparent 45%),
+                    radial-gradient(circle at 85% 75%, rgba(45,212,191,.12), transparent 45%),
+                    url('https://www.transparenttextures.com/patterns/cubes.png'),
+                    #0b1120 !important;
+                border-bottom: 1px solid var(--border);
+                padding: 12vh 2rem 10vh;
+                position: relative;
+                overflow: hidden;
+            }
+            #intro::after {
+                content: "";
+                position: absolute; inset: auto 0 0 0; height: 2px;
+                background: linear-gradient(90deg, transparent, var(--accent), var(--accent-2), transparent);
+                opacity: .8;
+            }
+            #intro h1 {
+                font-family: var(--font-display);
+                font-size: clamp(2rem, 6vw, 3.6rem);
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                background: linear-gradient(45deg, var(--accent), var(--accent-2));
+                -webkit-background-clip: text; background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 12px;
+            }
+            #intro > p:first-of-type {
+                font-family: var(--font-display);
+                font-size: clamp(.95rem, 2.2vw, 1.15rem);
+                letter-spacing: 3px;
+                text-transform: uppercase;
+                color: var(--accent-2) !important;
+                margin-bottom: 22px;
+            }
+            #intro p { font-size: 1.05rem; max-width: 720px; margin: 0 auto 26px auto; line-height: 1.8; }
+
+            /* ============ BUTTONS ============ */
+            .button {
+                background: transparent !important;
+                border: 1.5px solid var(--accent) !important;
+                color: var(--accent) !important;
+                border-radius: 999px !important;
+                font-family: var(--font-display) !important;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                font-size: .78rem !important;
+                padding: 0 1.9em !important;
+                height: 3em !important;
+                line-height: 2.85em !important;
+                box-shadow: 0 0 0 rgba(56,189,248,0);
+                transition: all .3s ease !important;
+            }
+            .button:hover {
+                background: linear-gradient(45deg, var(--accent), var(--accent-2)) !important;
+                border-color: transparent !important;
+                color: #04121f !important;
+                box-shadow: 0 8px 28px var(--accent-glow);
+                transform: translateY(-2px);
+            }
+            .button.large { font-size: .85rem !important; }
+
+            /* ============ NAV ============ */
+            #nav { background-color: rgba(18,28,51,.92) !important; }
+            #nav.alt, #nav:not(.alt) { backdrop-filter: blur(12px); }
+            #nav ul.links > li > a {
+                font-family: var(--font-display);
+                letter-spacing: 1.2px;
+                font-size: .78rem;
+                text-transform: uppercase;
+            }
+            #nav ul.links > li.active > a,
+            #nav ul.links > li > a:hover { color: var(--accent-2) !important; }
+            #nav ul.icons li a:hover { color: var(--accent) !important; }
+
+            #header .logo {
+                font-family: var(--font-display) !important;
+                letter-spacing: 3px;
+                border-color: var(--accent) !important;
+                color: var(--text-main) !important;
+            }
+            #header .logo:hover { color: var(--accent) !important; }
+
+            /* ============ MAIN WRAPPER ============ */
+            #wrapper { background-color: transparent; }
+            #main > * {
+                background-color: var(--bg-main) !important;
+                border-top: 1px solid var(--border) !important;
+            }
+
+            /* Section headings */
+            header.major h2 {
+                position: relative;
+                display: inline-block;
+                padding-bottom: 14px;
+                font-size: clamp(1.5rem, 4vw, 2.1rem);
+            }
+            header.major h2::after {
+                content: "";
+                position: absolute; left: 0; bottom: 0;
+                width: 64px; height: 3px; border-radius: 3px;
+                background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            }
+            header.major p { line-height: 1.85; }
+
+            /* ============ SKILLS GRID ============ */
+            .skills-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 22px;
+                margin-top: 26px;
+            }
+            .skill-card {
+                flex: 1 1 260px;
+                background: linear-gradient(160deg, var(--bg-elev), var(--bg-surface));
+                padding: 32px 24px;
+                border-radius: var(--radius);
+                text-align: center;
+                border: 1px solid var(--border);
+                box-shadow: 0 6px 20px rgba(0,0,0,.35);
+                transition: transform .35s cubic-bezier(.22,1,.36,1),
+                            box-shadow .35s ease, border-color .35s ease;
+                position: relative;
+                overflow: hidden;
+            }
+            .skill-card::before {
+                content: "";
+                position: absolute; top: 0; left: 0; right: 0; height: 2px;
+                background: linear-gradient(90deg, var(--accent), var(--accent-2));
+                transform: scaleX(0);
+                transform-origin: left;
+                transition: transform .4s ease;
+            }
+            .skill-card:hover::before { transform: scaleX(1); }
+            .skill-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 18px 40px rgba(0,0,0,.55), 0 0 0 1px var(--accent-glow);
+                border-color: rgba(56,189,248,.45);
+            }
+            .skill-card i {
+                font-size: 2.3rem;
+                background: linear-gradient(45deg, var(--accent), var(--accent-2));
+                -webkit-background-clip: text; background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 16px;
+                display: block;
+            }
+            .skill-card h3 {
+                margin-bottom: 16px;
+                font-size: 1.05rem;
+                text-transform: uppercase;
+                letter-spacing: 1.5px;
+            }
+            .skill-card ul { list-style: none; padding: 0; margin: 0; }
+            .skill-card li {
+                margin-bottom: 10px;
+                font-size: .92rem;
+                padding-bottom: 10px;
+                border-bottom: 1px solid rgba(148,163,184,.10);
+            }
+            .skill-card li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+            /* ============ VIDEO ============ */
+            .video-container {
+                background: linear-gradient(160deg, var(--bg-elev), var(--bg-surface));
+                padding: 18px;
+                border-radius: var(--radius);
+                border: 1px solid var(--border);
+                box-shadow: 0 20px 45px rgba(0,0,0,.5);
+                margin: 0 auto;
+                max-width: 860px;
+            }
+            .video-container video {
+                border-radius: 10px;
+                outline: none;
+                display: block;
+                background: #000;
+            }
+
+            /* ============ FEATURED PROJECT ============ */
+            .posts article, article.post.featured {
+                background: linear-gradient(160deg, var(--bg-elev), var(--bg-surface)) !important;
+                border-radius: var(--radius) !important;
+                overflow: hidden;
+                border: 1px solid var(--border) !important;
+                box-shadow: 0 8px 26px rgba(0,0,0,.35);
+                transition: transform .35s cubic-bezier(.22,1,.36,1),
+                            box-shadow .35s ease, border-color .35s ease;
+            }
+            .posts article:hover, article.post.featured:hover {
+                transform: translateY(-6px);
+                border-color: rgba(56,189,248,.45) !important;
+                box-shadow: 0 20px 45px rgba(0,0,0,.55), 0 0 0 1px var(--accent-glow);
+            }
+            article.post.featured .image.main img,
+            .posts article .image img {
+                transition: transform .6s cubic-bezier(.22,1,.36,1), filter .4s ease;
+                filter: saturate(.9);
+            }
+            article.post.featured .image.main:hover img,
+            .posts article .image:hover img {
+                transform: scale(1.05);
+                filter: saturate(1.1);
+            }
+            .posts article .image, article.post.featured .image.main { overflow: hidden; }
+
+            /* Tag pill */
+            .tag {
+                display: inline-block;
+                font-family: var(--font-display);
+                font-size: .68rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--accent-2);
+                border: 1px solid rgba(45,212,191,.35);
+                background: rgba(45,212,191,.08);
+                border-radius: 999px;
+                padding: .35em 1em;
+                margin-bottom: 14px;
+            }
+
+            /* ============ COMING SOON GRID ============ */
+            .soon-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 22px;
+                margin-top: 30px;
+            }
+            .soon-card {
+                position: relative;
+                background: linear-gradient(160deg, rgba(23,34,60,.9), rgba(18,28,51,.7));
+                border: 1px dashed rgba(148,163,184,.28);
+                border-radius: var(--radius);
+                padding: 34px 24px 30px;
+                text-align: center;
+                transition: border-color .35s ease, transform .35s ease, background .35s ease;
+                overflow: hidden;
+            }
+            .soon-card::after {
+                content: "";
+                position: absolute;
+                top: 0; left: -60%;
+                width: 60%; height: 100%;
+                background: linear-gradient(100deg, transparent, rgba(56,189,248,.07), transparent);
+                transform: skewX(-18deg);
+                transition: left .8s ease;
+            }
+            .soon-card:hover::after { left: 120%; }
+            .soon-card:hover {
+                transform: translateY(-6px);
+                border-color: rgba(56,189,248,.5);
+                background: linear-gradient(160deg, rgba(23,34,60,1), rgba(18,28,51,.9));
+            }
+            .soon-card > i {
+                font-size: 2.1rem;
+                display: block;
+                margin-bottom: 16px;
+                color: var(--accent);
+                opacity: .85;
+            }
+            .soon-card h3 {
+                font-size: 1rem;
+                margin-bottom: 12px;
+                text-transform: uppercase;
+                letter-spacing: 1.2px;
+            }
+            .soon-card p { font-size: .9rem; line-height: 1.75; margin-bottom: 18px; }
+
+            .soon-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-family: var(--font-display);
+                font-size: .65rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--accent-2);
+                border: 1px solid rgba(45,212,191,.35);
+                background: rgba(45,212,191,.07);
+                border-radius: 999px;
+                padding: .35em 1em;
+                margin-bottom: 20px;
+            }
+            .soon-badge .dot {
+                width: 7px; height: 7px; border-radius: 50%;
+                background: var(--accent-2);
+                box-shadow: 0 0 0 0 rgba(45,212,191,.6);
+                animation: pulse 2s infinite;
+            }
+            @keyframes pulse {
+                0%   { box-shadow: 0 0 0 0 rgba(45,212,191,.55); }
+                70%  { box-shadow: 0 0 0 9px rgba(45,212,191,0); }
+                100% { box-shadow: 0 0 0 0 rgba(45,212,191,0); }
+            }
+
+            /* Progress bar */
+            .progress {
+                height: 5px;
+                width: 100%;
+                background: rgba(148,163,184,.14);
+                border-radius: 999px;
+                overflow: hidden;
+                margin-bottom: 8px;
+            }
+            .progress > span {
+                display: block;
+                height: 100%;
+                border-radius: 999px;
+                background: linear-gradient(90deg, var(--accent), var(--accent-2));
+            }
+            .progress-label {
+                font-size: .72rem !important;
+                letter-spacing: 1.5px;
+                text-transform: uppercase;
+                color: var(--text-muted);
+                margin: 0 !important;
+            }
+
+            /* ============ FOOTER ============ */
+            #footer {
+                background-color: var(--bg-surface) !important;
+                border-top: 1px solid var(--border) !important;
+            }
+            #footer h3 {
+                font-size: .78rem;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--accent-2) !important;
+            }
+            #footer .icons.alt li a { color: var(--text-muted); }
+            #footer .icons.alt li a:hover { color: var(--accent); }
+
+            #copyright { background-color: var(--bg-main); border-top: 1px solid var(--border); }
+            #copyright ul li { font-size: .78rem; letter-spacing: 1px; }
+
+            /* ============ BACK TO TOP ============ */
+            #toTop {
+                position: fixed;
+                right: 22px; bottom: 22px;
+                width: 46px; height: 46px;
+                display: flex; align-items: center; justify-content: center;
+                border-radius: 50%;
+                background: linear-gradient(45deg, var(--accent), var(--accent-2));
+                color: #04121f !important;
+                font-size: .95rem;
+                box-shadow: 0 8px 24px var(--accent-glow);
+                opacity: 0; visibility: hidden;
+                transform: translateY(14px);
+                transition: all .35s ease;
+                z-index: 9999;
+                cursor: pointer;
+            }
+            #toTop.show { opacity: 1; visibility: visible; transform: none; }
+            #toTop:hover { transform: translateY(-3px); }
+
+            /* ============ RESPONSIVE ============ */
+            @media screen and (max-width: 736px) {
+                #intro { padding: 14vh 1.5rem 9vh; }
+                #intro h1 { letter-spacing: 1px; }
+                .skill-card { flex: 1 1 100%; }
+                .soon-grid { grid-template-columns: 1fr; }
+                header.major h2 { font-size: 1.45rem; }
+            }
+        </style>
+    </head>
+    <body class="is-preload">
+
+        <script>document.documentElement.classList.add('js');</script>
+
+        <!-- Wrapper -->
+        <div id="wrapper" class="fade-in">
+
+            <!-- Intro -->
+            <div id="intro">
+                <h1>Owase The Analyst</h1>
+                <p>Data Analytics &amp; Economic Insights</p>
+                <p>Bridging the gap between raw economic data and strategic business decisions. I use SQL, Python, Stata and BI tools to clean messy data, uncover hidden market trends and build high-impact visual dashboards.</p>
+                <ul class="actions">
+                    <li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
+                </ul>
+            </div>
+
+            <!-- Header -->
+            <header id="header">
+                <a href="#intro" class="logo scrolly">OWASE</a>
+            </header>
+
+            <!-- Nav -->
+            <nav id="nav">
+                <ul class="links">
+                    <li class="active"><a href="#intro" class="scrolly">Portfolio</a></li>
+                    <li><a href="#about" class="scrolly">About &amp; Skills</a></li>
+                    <li><a href="#video-intro" class="scrolly">Overview</a></li>
+                    <li><a href="#projects" class="scrolly">Projects</a></li>
+                    <li><a href="#coming-soon" class="scrolly">Coming Soon</a></li>
+                </ul>
+                <ul class="icons">
+                    <li><a href="https://twitter.com/Iano_mesh" class="icon brands fa-twitter" target="_blank" rel="noopener"><span class="label">Twitter</span></a></li>
+                    <li><a href="https://github.com/meshackowase-" class="icon brands fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+                </ul>
+            </nav>
+
+            <!-- Main -->
+            <div id="main">
+
+                <!-- About & Skills -->
+                <section id="about" class="post reveal">
+                    <header class="major">
+                        <h2>About Me &amp; Expertise</h2>
+                        <p>I am a qualified Economist and Statistician holding a Bachelor's degree in Economics and Statistics from Chuka University. I combine a rigorous academic background in econometric modelling and time-series analysis with practical data expertise to deliver actionable business insights.</p>
+                    </header>
+
+                    <div class="skills-grid">
+                        <div class="skill-card">
+                            <i class="fas fa-database"></i>
+                            <h3>Data Tools</h3>
+                            <ul>
+                                <li>SQL Server &amp; MySQL</li>
+                                <li>PostgreSQL</li>
+                                <li>Data Cleaning &amp; ETL</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fab fa-python"></i>
+                            <h3>Programming</h3>
+                            <ul>
+                                <li>Python (Pandas, NumPy)</li>
+                                <li>HTML / JavaScript</li>
+                                <li>VS Code Environments</li>
+                            </ul>
+                        </div>
+                        <div class="skill-card">
+                            <i class="fas fa-chart-line"></i>
+                            <h3>BI &amp; Statistics</h3>
+                            <ul>
+                                <li>Stata &amp; SPSS</li>
+                                <li>Power BI &amp; Tableau</li>
+                                <li>Advanced Excel Modelling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Video Intro -->
+                <section id="video-intro" class="post reveal">
+                    <header class="major">
+                        <h2>The Role of a Data Professional</h2>
+                        <p>Data analysts act as the bridge between raw information and strategic decisions. Watch this overview on how analytical skills, statistical software and mathematical modelling combine to answer complex business and policy questions.</p>
+                    </header>
+
+                    <div class="video-container">
+                        <video width="100%" controls poster="images/video-thumbnail-placeholder.jpg">
+                            <source src="videos/data.mp4" type="video/mp4">
+                            Your browser does not support the HTML5 video tag.
+                        </video>
+                    </div>
+                </section>
+
+                <!-- Featured Project -->
+                <article id="projects" class="post featured reveal">
+                    <header class="major">
+                        <span class="tag">Featured Project</span>
+                        <h2><a href="https://github.com/meshackowase-commits/SQL-PROJECTS" target="_blank" rel="noopener">Data Cleaning &amp; Transformation in SQL</a></h2>
+                        <p>Raw operational data is rarely analysis-ready. For this project I used SQL Server to engineer a comprehensive data-cleaning pipeline on a complex dataset — converting unstructured, error-prone records into a high-integrity asset suitable for production-level reporting.</p>
+                    </header>
+                    <a href="https://github.com/meshackowase-commits/SQL-PROJECTS" class="image main" target="_blank" rel="noopener">
+                        <img src="images/download (3).jpeg" alt="Data Cleaning in SQL" />
+                    </a>
+                    <ul class="actions special">
+                        <li><a href="https://github.com/meshackowase-commits/SQL-PROJECTS" class="button large" target="_blank" rel="noopener">View Project</a></li>
+                    </ul>
+                </article>
+
+                <!-- Coming Soon -->
+                <section id="coming-soon" class="post reveal">
+                    <header class="major">
+                        <h2>Projects In The Pipeline</h2>
+                        <p>New work is currently in development. Each of these will be published to my GitHub with full documentation, queries and dashboards as soon as it is finished.</p>
+                    </header>
+
+                    <div class="soon-grid">
+
+                        <div class="soon-card">
+                            <span class="soon-badge"><span class="dot"></span>Coming Soon</span>
+                            <i class="fas fa-chart-pie"></i>
+                            <h3>Power BI Sales Dashboard</h3>
+                            <p>An interactive executive dashboard tracking revenue, regional performance and product mix with drill-through KPIs.</p>
+                            <div class="progress"><span style="width: 70%"></span></div>
+                            <p class="progress-label">70% complete</p>
+                        </div>
+
+                        <div class="soon-card">
+                            <span class="soon-badge"><span class="dot"></span>Coming Soon</span>
+                            <i class="fab fa-python"></i>
+                            <h3>Python Exploratory Data Analysis</h3>
+                            <p>End-to-end EDA using Pandas, NumPy and Matplotlib to surface trends, outliers and correlations in a real-world dataset.</p>
+                            <div class="progress"><span style="width: 45%"></span></div>
+                            <p class="progress-label">45% complete</p>
+                        </div>
+
+                        <div class="soon-card">
+                            <span class="soon-badge"><span class="dot"></span>Coming Soon</span>
+                            <i class="fas fa-chart-area"></i>
+                            <h3>Econometric Time-Series Study</h3>
+                            <p>An ARDL and Granger causality analysis on fiscal policy, public debt and Kenya's manufacturing sector, built in Stata.</p>
+                            <div class="progress"><span style="width: 30%"></span></div>
+                            <p class="progress-label">30% complete</p>
+                        </div>
+
+                        <div class="soon-card">
+                            <span class="soon-badge"><span class="dot"></span>Coming Soon</span>
+                            <i class="fas fa-code"></i>
+                            <h3>Interactive Web Data Tool</h3>
+                            <p>A lightweight HTML/JavaScript application that accepts uploaded data and renders dynamic performance charts in the browser.</p>
+                            <div class="progress"><span style="width: 15%"></span></div>
+                            <p class="progress-label">15% complete</p>
+                        </div>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <section class="split contact">
+                    <section class="alt">
+                        <h3>Location</h3>
+                        <p>Kilifi<br />Coast, Kenya</p>
+                    </section>
+                    <section>
+                        <h3>Phone</h3>
+                        <p><a href="tel:+254115722560">(+254) 115 722 560</a></p>
+                    </section>
+                    <section>
+                        <h3>Email</h3>
+                        <p><a href="mailto:meshackowase@gmail.com">meshackowase@gmail.com</a></p>
+                    </section>
+                    <section>
+                        <h3>Social</h3>
+                        <ul class="icons alt">
+                            <li><a href="https://twitter.com/Iano_mesh" class="icon brands alt fa-twitter" target="_blank" rel="noopener"><span class="label">Twitter</span></a></li>
+                            <li><a href="https://github.com/meshackowase-" class="icon brands alt fa-github" target="_blank" rel="noopener"><span class="label">GitHub</span></a></li>
+                            <li><a href="#" class="icon brands alt fa-linkedin" target="_blank" rel="noopener"><span class="label">LinkedIn</span></a></li>
+                        </ul>
+                    </section>
+                </section>
+            </footer>
+
+            <!-- Copyright -->
+            <div id="copyright">
+                <ul>
+                    <li>&copy; <span id="year">2025</span> Ian Meshack Owase</li>
+                    <li>Data Analytics Portfolio</li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Back to top -->
+        <a href="#intro" id="toTop" class="scrolly" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
+        <!-- Scripts -->
+        <script src="assets/js/jquery.min.js"></script>
+        <script src="assets/js/jquery.scrollex.min.js"></script>
+        <script src="assets/js/jquery.scrolly.min.js"></script>
+        <script src="assets/js/browser.min.js"></script>
+        <script src="assets/js/breakpoints.min.js"></script>
+        <script src="assets/js/util.js"></script>
+        <script src="assets/js/main.js"></script>
+
+        <script>
+            // Current year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Scroll reveal
+            (function () {
+                var items = document.querySelectorAll('.reveal');
+                if (!('IntersectionObserver' in window)) {
+                    items.forEach(function (el) { el.classList.add('is-visible'); });
+                    return;
+                }
+                var io = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            io.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                items.forEach(function (el) { io.observe(el); });
+            })();
+
+            // Back to top visibility
+            (function () {
+                var btn = document.getElementById('toTop');
+                window.addEventListener('scroll', function () {
+                    btn.classList.toggle('show', window.scrollY > 500);
+                }, { passive: true });
+            })();
+        </script>
+
+    </body>
+</html>
